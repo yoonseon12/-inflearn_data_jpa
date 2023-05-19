@@ -2,7 +2,6 @@ package study.datajpa.entity;
 
 
 import lombok.*;
-import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
 
@@ -10,6 +9,11 @@ import javax.persistence.*;
 @Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(exclude = "team")
+@NamedQuery(
+        name = "Member.findByUsername",
+        query = "select m from Member m where m.username = :username"
+)
+@NamedEntityGraph(name = "Member.all", attributeNodes = @NamedAttributeNode("team"))
 public class Member {
     @Id
     @GeneratedValue
@@ -24,6 +28,11 @@ public class Member {
 
     public Member(String username) {
         this.username = username;
+    }
+
+    public Member(String username, int age) {this.id = id;
+        this.username = username;
+        this.age = age;
     }
 
     public Member(String username, int age, Team team) {
