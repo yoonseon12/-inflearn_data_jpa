@@ -18,6 +18,13 @@ spring:
 #        show-sql: true
         format_sql: true
 
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
+#        defalut-page-size: 10 # 기본 페이지 사이즈 글로벌설정
+#        max-page-size: 2000 # 최대 페이지 사이즈 글로벌 설정
+
 logging.level:
   org.hibernate.SQL: debug
 #  org.hibernate.type: trace
